@@ -16,8 +16,10 @@ with open(input_filename) as country_file:
             'timezone': timezone,
             'currency': currency,
         }
-        print(country_dict)
+        # print(country_dict)
         countries[country.casefold()] = country_dict
+        # code_lookup[code.casefold()] = country
+        countries[code.casefold()] = country_dict
 
 # print(countries)
 
@@ -25,6 +27,12 @@ while True:
     user_choose = input("What country you want to know about?: ").casefold()
     if user_choose in countries:
         user_country = countries[user_choose]
-        print(f"The capital of {user_choose} is {user_country['capital']}")
+        if user_country['capital'] == "":
+            print(f"{user_country['name']} has no official capital")
+        else:
+            print(f"The capital of {user_country['name']} is {user_country['capital']}")
+
     elif user_choose == 'quit':
         break
+    else:
+        print("There is no country with that name/come")
