@@ -1,3 +1,5 @@
+import csv
+
 input_filename = 'files/country_info.txt'
 
 countries = {}
